@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "Proyecto colaborativo para ingeniería web",
   "main": "index.js",
+  "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -10,7 +11,9 @@
   "license": "ISC",
   "dependencies": {
     "axios": "^1.9.0",
+    "ejs": "^3.1.10",
     "express": "^5.1.0",
+    "nodemon": "^3.1.10",
     "pg": "^8.16.0"
   }
 }
