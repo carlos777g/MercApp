@@ -1,0 +1,76 @@
+# 🛒 Proyecto Full Stack - Tienda web
+
+Este proyecto es una página web para ventas online. Se desarrolló usando **React (frontend)**, **Node.js + Express (backend)** y **PostgreSQL (base de datos)**.
+
+---
+
+## 📁 Estructura del Proyecto
+MerApp/
+├── client/ # Frontend (React + Vite)
+│ ├── public/
+│ └── src/
+│ ├── assets/ # Imágenes y recursos
+│ ├── components/ # Componentes reutilizables (Navbar, Cards, etc.)
+│ ├── pages/ # Páginas como Home, Productos, Login
+│ ├── services/ # Llamadas a la API
+│ └── App.jsx
+│ └── package.json
+│
+├── server/ # Backend (Node.js + Express)
+│ ├── controllers/ # Lógica de negocio
+│ ├── routes/ # Rutas API (usuarios, productos, auth)
+│ ├── models/ # Modelos de base de datos / ORM
+│ ├── middleware/ # JWT, errores, validaciones
+│ ├── config/ # Conexión a base de datos
+│ └── index.js # Punto de entrada
+│ └── package.json
+│
+├── database/
+│ └── init.sql # Script para crear tablas (usuarios, productos, etc.)
+│
+├── .env # Variables de entorno (conexión DB, JWT secret)
+├── .gitignore
+└── README.md # Este archivo
+
+---
+
+## ⚙️ Requisitos Previos
+
+- Node.js (v18 o superior)
+- PostgreSQL
+- npm
+- Git
+
+---
+
+## 🚀 Instalación
+
+### 1. Clona el repositorio
+
+```bash
+git clone https://github.com/tuusuario/mi-tienda-ropa.git
+cd mi-tienda-ropa
+
+### 2. Instala dependencias
+#### Frontend (React + Vite)
+cd client
+npm install
+
+#### Backend (Node.js + Express)
+cd server
+npm install
+
+## 🧪 Correr en entorno local
+### 1. Configura variables de entorno
+Crea un archivo .env en /server con contenido similar a este:
+PORT=3000
+DB_HOST=localhost
+DB_PORT=5432
+DB_USER=postgres
+DB_PASSWORD=tu_clave
+DB_NAME=tiendaropa
+JWT_SECRET=secretosecreto
+
+### 2. Crea la base de datos
+Usa PostgreSQL y ejecuta el archivo database/init.sql:
+psql -U postgres -f database/init.sql
