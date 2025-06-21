@@ -1,0 +1,33 @@
+\section{Análisis de Requerimientos}
+
+El sistema está orientado al comercio electrónico de productos físicos, contemplando tres tipos principales de usuarios y múltiples funcionalidades específicas para cada uno.
+
+\subsection{Requerimientos Funcionales (RF)}
+\begin{itemize}
+  \item RF-01: El sistema debe permitir a los administradores realizar CRUD de usuarios (cliente, administrador, auxiliar).
+  \item RF-02: El administrador podrá gestionar productos con campos como identificador, nombre, precio, stock, imágenes, calificación y recomendaciones.
+  \item RF-03: El sistema debe permitir generar reportes de ventas por día y mes.
+  \item RF-04: El cliente podrá consultar productos, agregarlos al carrito, realizar compras, gestionar sus tarjetas y direcciones, y calificar productos.
+  \item RF-05: El auxiliar podrá modificar precios, stock e imágenes, además de actualizar el estatus de ventas.
+  \item RF-06: El sistema debe gestionar sesiones de usuarios y control de acceso.
+\end{itemize}
+
+\subsection{Requerimientos No Funcionales (RNF)}
+\begin{itemize}
+  \item RNF-01: Seguridad mediante autenticación OAuth.
+  \item RNF-02: Validación de formularios con JavaScript.
+  \item RNF-03: El sistema debe estar desarrollado en una arquitectura desacoplada y modular.
+  \item RNF-04: Uso obligatorio de control de versiones con Git.
+  \item RNF-05: Toda la documentación debe estar escrita en LaTeX y cumplir normas ortográficas.
+\end{itemize}
+
+\subsection{Casos de Uso}
+
+A continuación se describen los casos de uso principales del sistema:
+
+\begin{itemize}
+  \item \textbf{CU-01: Iniciar sesión} – Todos los usuarios inician sesión con credenciales válidas.
+  \item \textbf{CU-02: Gestionar productos} – El administrador o auxiliar modifica información de productos.
+  \item \textbf{CU-03: Realizar compra} – El cliente agrega productos al carrito y finaliza la compra.
+  \item \textbf{CU-04: Consultar ventas} – El administrador genera reportes de ventas por fecha.
+\end{itemize}
