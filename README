@@ -52,15 +52,19 @@ git clone https://github.com/tuusuario/mi-tienda-ropa.git
 cd mi-tienda-ropa
 
 ### 2. Instala dependencias
+
 #### Frontend (React + Vite)
+
 cd client
 npm install
 
 #### Backend (Node.js + Express)
+
 cd server
 npm install
 
 ## 🧪 Correr en entorno local
+
 ### 1. Configura variables de entorno
 Crea un archivo .env en /server con contenido similar a este:
 PORT=3000
@@ -74,3 +78,14 @@ JWT_SECRET=secretosecreto
 ### 2. Crea la base de datos
 Usa PostgreSQL y ejecuta el archivo database/init.sql:
 psql -U postgres -f database/init.sql
+
+# Documentación técnica - Tienda Web
+
+## 📦 Requisitos
+- LaTeX (pdflatex o xelatex)
+- Paquetes básicos (`inputenc`, `graphicx`, `babel`, etc.)
+
+## 🛠️ Compilación
+
+```bash
+pdflatex main.tex
