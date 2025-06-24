@@ -1,15 +1,16 @@
-import express from "express";
-import axios from "axios";
-
+import express from 'express';
+import cors from "cors";
 const app = express();
-const port = 3000;
+const PORT = 5000;
 
+app.use(cors());
+app.use(express.json());
 
-app.get("/", (req, res) => {
-    res.render("home.ejs");
-})
+// Una ruta que devuelve datos
+app.get('/api/saludo', (req, res) => {
+  res.json({ mensaje: 'Hola desde el backend' });
+});
 
-
-app.listen(port, () => {
-    console.log(`Server listening on port: ${port}`);
+app.listen(PORT, () => {
+  console.log(`Backend en http://localhost:${PORT}`);
 });
