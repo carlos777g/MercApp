@@ -1,5 +1,5 @@
 import express from "express";
-import pool from "../config/db"; // archivo de la conexión a la base de datos
+import pool from "../config/db.js"; // archivo de la conexión a la base de datos
 const router = express.Router();
 
 // Ruta para registrar un nuevo usuario
