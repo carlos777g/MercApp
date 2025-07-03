@@ -19,20 +19,29 @@ app.listen(PORT, () => {
 
 import axios from "axios";
 
-const registrarUsuario = async () => {
+const registrar = async () => {
   try {
-    const response = await axios.post("http://localhost:3000/usuarios/registro", {
-      correo: "carlos@correo.com",
-      contraseña: "123456",
-      nombre: "Carlos",
-      apellido: "Guillén",
-      rol: "Cliente"
+    const res = await axios.post("http://localhost:3001/api/usuarios/registroUsuarios", {
+      correo,
+      contraseña,
+      nombre,
+      apellido,
+      rol
     });
 
-    console.log("Usuario registrado:", response.data);
-  } catch (error) {
-    console.error("Error al registrar usuario:", error.response?.data || error.message);
+    // Aquí redirigen si todo fue bien
+    console.log(res.data.mensaje);
+    navigate("/dashboard"); // o donde quieras llevar al usuario
+
+  } catch (err) {
+    // Aquí muestras el error en pantalla
+    if (err.response?.status === 409) {
+      setError("Este correo ya está registrado");
+    } else {
+      setError("Error al registrar el usuario");
+    }
   }
 };
+
 
 */
