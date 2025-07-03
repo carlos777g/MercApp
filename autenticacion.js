@@ -7,7 +7,7 @@ import { Strategy } from "passport-local";
 import session from "express-session";
 import env from "dotenv";
 import GoogleStrategy from "passport-google-oauth2";
-
+\
 const app = express();
 const port = 3000;
 const saltRounds = 10;

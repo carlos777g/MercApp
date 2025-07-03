@@ -3,7 +3,6 @@ import axios from 'axios';
 
 function App() {
   const [mensaje, setMensaje] = useState('');
-
   useEffect(() => {
     axios.get('http://localhost:5000/api/saludo')
       .then(response => setMensaje(response.data.mensaje))

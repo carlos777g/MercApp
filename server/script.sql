@@ -130,4 +130,3 @@ CREATE TABLE Calificaciones (
     FOREIGN KEY (Id_usuario) REFERENCES Usuarios(Id_usuario),
     FOREIGN KEY (Id_producto) REFERENCES Productos(Id_producto)
 );
-
