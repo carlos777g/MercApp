@@ -14,18 +14,25 @@ app.listen(PORT, () => {
 });
 
 /*
-Ejemplo de petición desde el frontend (aquí simulamos con postman)
-fetch("http://localhost:3000/registroUsuarios", {
-  method: "POST",
-  headers: {
-    "Content-Type": "application/json"
-  },
-  body: JSON.stringify({
-    correo: "carlos@correo.com",
-    contraseña: "123456",
-    nombre: "Carlos",
-    apellido: "Guillén",
-    rol: "Cliente"
-  })
-});
+====================================================================
+// Ejemplo de petición desde el frontend (aquí en el backend simulamos con postman):
+
+import axios from "axios";
+
+const registrarUsuario = async () => {
+  try {
+    const response = await axios.post("http://localhost:3000/usuarios/registro", {
+      correo: "carlos@correo.com",
+      contraseña: "123456",
+      nombre: "Carlos",
+      apellido: "Guillén",
+      rol: "Cliente"
+    });
+
+    console.log("Usuario registrado:", response.data);
+  } catch (error) {
+    console.error("Error al registrar usuario:", error.response?.data || error.message);
+  }
+};
+
 */
