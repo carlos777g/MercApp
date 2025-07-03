@@ -1,0 +1,45 @@
+{
+	"info": {
+		"_postman_id": "282299bd-fbe6-4acc-9259-3bfabaea1dc2",
+		"name": "MercApp",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "39745938"
+	},
+	"item": [
+		{
+			"name": "New Request",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"correo\": \"ejemplo@correo.com\",\n  \"contraseña\": \"123456\",\n  \"nombre\": \"Carlos\",\n  \"apellido\": \"González\",\n  \"rol\": \"Cliente\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/usuarios/registro",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"usuarios",
+						"registro"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
