@@ -3,6 +3,7 @@ import usuariosRoutes from "./routes/registroUsuarios.js";
 import cors from "cors";
 import session from "express-session";
 import passport from "passport";
+import "./config/passport.js";
 import authRoutes from "./routes/authRoutes.js";
 
 const app = express();

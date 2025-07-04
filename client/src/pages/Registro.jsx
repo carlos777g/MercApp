@@ -86,7 +86,18 @@ export default function Registro() {
         <div className="text-center mt-3">
           <a href="/login">¿Ya tienes cuenta? Inicia sesión</a>
         </div>
+
+        <button
+          className="btn btn-danger w-100"
+          onClick={() => window.location.href = "http://localhost:3000/auth/google"}
+        >
+          <i className="fab fa-google me-2"></i>
+          Registrarse con Google
+        </button>
+
       </form>
     </div>
+
+
   );
 }

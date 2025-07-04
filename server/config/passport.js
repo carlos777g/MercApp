@@ -1,40 +1,36 @@
+// config/passport.js
 import passport from "passport";
-import { Strategy as GoogleStrategy } from "passport-google-oauth2";
-import dotenv from "dotenv";
-import pool from "./db.js";
+import { Strategy as GoogleStrategy } from "passport-google-oauth20";
+import pool from "../config/db.js";
+import dotenv from "dotenv/config";
 
-dotenv.config();
+passport.use(
+  new GoogleStrategy(
+    {
+      clientID: process.env.GOOGLE_CLIENT_ID,
+      clientSecret: process.env.GOOGLE_CLIENT_SECRET,
+      callbackURL: "http://localhost:3000/auth/google/callback",
+    },
+    async (accessToken, refreshToken, profile, done) => {
+      try {
+        const result = await pool.query("SELECT * FROM Usuarios WHERE Correo = $1", [profile.emails[0].value]);
 
-passport.use(new GoogleStrategy({
-  clientID: process.env.GOOGLE_CLIENT_ID,
-  clientSecret: process.env.GOOGLE_CLIENT_SECRET,
-  callbackURL: process.env.GOOGLE_CALLBACK
-},
-  async (accessToken, refreshToken, profile, done) => {
-    try {
-      const res = await pool.query("SELECT * FROM Usuarios WHERE correo = $1", [profile.email]);
-      if (res.rows.length > 0) {
-        done(null, res.rows[0]);
-      } else {
-        const insert = await pool.query(
-          `INSERT INTO Usuarios (correo, contraseña, nombre, rol)
-           VALUES ($1, $2, $3, $4)
-           RETURNING *`,
-          [profile.email, "oauth-google", profile.displayName, "Cliente"]
-        );
-        done(null, insert.rows[0]);
+        if (result.rows.length === 0) {
+          // Usuario nuevo → crear
+          const nuevoUsuario = await pool.query(
+            `INSERT INTO Usuarios (Correo, Contraseña, Nombre, Rol)
+             VALUES ($1, $2, $3, $4)
+             RETURNING *`,
+            [profile.emails[0].value, "oauth_google", profile.displayName, "Cliente"]
+          );
+          return done(null, nuevoUsuario.rows[0]);
+        }
+
+        // Usuario existente
+        return done(null, result.rows[0]);
+      } catch (err) {
+        return done(err, null);
       }
-    } catch (err) {
-      done(err, null);
     }
-  }
-));
-
-passport.serializeUser((user, done) => {
-  done(null, user.id_usuario);
-});
-
-passport.deserializeUser(async (id, done) => {
-  const res = await pool.query("SELECT * FROM Usuarios WHERE id_usuario = $1", [id]);
-  done(null, res.rows[0]);
-});
+  )
+);
