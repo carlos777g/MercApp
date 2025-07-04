@@ -1,0 +1,18 @@
+.container {
+  max-width: 700px;
+}
+
+textarea.form-control,
+select.form-select {
+  background-color: #1e1e1e;
+  color: #fff;
+  border-color: #444;
+}
+
+textarea.form-control:focus,
+select.form-select:focus {
+  background-color: #1e1e1e;
+  color: #fff;
+  border-color: #ffc107;
+  box-shadow: none;
+}

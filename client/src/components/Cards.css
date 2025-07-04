@@ -1,0 +1,11 @@
+#custom-cards {
+  min-height: 100vh;
+  background-color: black;
+}
+.card {
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+.card:hover {
+  transform: scale(1.03);
+}
