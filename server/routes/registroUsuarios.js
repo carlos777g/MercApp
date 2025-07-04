@@ -1,6 +1,7 @@
 import express from "express";
 import bcrypt from "bcrypt";
 import pool from "../config/db.js"; // archivo de la conexión a la base de datos
+import jwt from "jsonwebtoken";
 const router = express.Router();
 
 const saltRounds = 10;
@@ -36,13 +37,15 @@ router.post("/registro", async (req, res) => {
       [correo, hashedPassword, nombre, apellido, rol]
     );
 
-    const nuevoUsuario = result.rows[0];
+    const usuario = result.rows[0];
 
     // Éxito: enviar los datos mínimos al frontend
-    res.status(201).json({ mensaje: "Usuario registrado", usuario: nuevoUsuario });
+    const token = jwt.sign({ id: usuario.id_usuario, correo: usuario.correo }, process.env.JWT_SECRET, { expiresIn: '1h' });
+    res.status(201).json({ mensaje: "Registrado", token });
+    // res.status(201).json({ mensaje: "Usuario registrado", usuario: nuevoUsuario });
 
   } catch (err) {
-    console.error("Error en /registroUsuarios:", err);
+    console.error("Error en /registro:", err);
 
     // Por si el error es por restricción de la base (como unique)
     if (err.code === "23505") {

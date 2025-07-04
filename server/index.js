@@ -1,12 +1,27 @@
 import express from "express";
 import usuariosRoutes from "./routes/registroUsuarios.js";
 import cors from "cors";
+import session from "express-session";
+import passport from "passport";
+import authRoutes from "./routes/authRoutes.js";
 
 const app = express();
 app.use(cors());
 app.use(express.json());
 
 app.use("/usuarios", usuariosRoutes);
+
+// Requerido por passport-google (aunque no uses sesión al final)
+app.use(session({
+  secret: process.env.JWT_SECRET,
+  resave: false,
+  saveUninitialized: true
+}));
+
+app.use(passport.initialize());
+app.use(passport.session());
+
+app.use("/auth", authRoutes);
 
 const PORT = 3000;
 app.listen(PORT, () => {
