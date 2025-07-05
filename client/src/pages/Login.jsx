@@ -1,14 +1,36 @@
 import { useState } from 'react';
+import axios from 'axios';
 import './Login.css';
 
 export default function Login() {
   const [correo, setCorreo] = useState('');
   const [password, setPassword] = useState('');
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log('Correo:', correo);
-    console.log('Password:', password);
+
+    try {
+      const response = await axios.post('http://localhost:3000/usuarios/login', {
+        correo,
+        contraseña: password, // el backend espera "contraseña"
+      });
+
+      console.log('Login exitoso:', response.data);
+
+      // Guardar token en localStorage o context
+      localStorage.setItem('token', response.data.token);
+
+      // Redirigir al dashboard o página principal
+      // window.location.href = '/dashboard';
+      alert(`Login correcto, token enviado desde el backend: ${response.data.token}`);
+    } catch (error) {
+      if (error.response) {
+        alert(error.response.data.error || 'Error al iniciar sesión');
+      } else {
+        alert('Error de red o servidor no disponible');
+      }
+      console.error('Error en login:', error);
+    }
   };
 
   return (

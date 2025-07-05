@@ -34,7 +34,8 @@ export default function Registro() {
       console.log("Registro exitoso:", response.data);
 
       // Redirigir a otra ruta (ej: dashboard)
-      window.location.href = "/dashboard";
+      // window.location.href = "/dashboard";
+      alert("Usuario guardado en nuestra base de datos");
     } catch (error) {
       if (error.response) {
         console.error("Error de servidor:", error.response.data);
@@ -82,18 +83,18 @@ export default function Registro() {
         </div>
 
         <button type="submit" className="btn btn-success w-100">Registrarse</button>
-
-        <div className="text-center mt-3">
-          <a href="/login">¿Ya tienes cuenta? Inicia sesión</a>
-        </div>
-
-        <button
+        <button style={{marginTop: '10px'}}
           className="btn btn-danger w-100"
           onClick={() => window.location.href = "http://localhost:3000/auth/google"}
         >
           <i className="fab fa-google me-2"></i>
           Registrarse con Google
         </button>
+        <div className="text-center mt-3">
+          <a href="/login">¿Ya tienes cuenta? Inicia sesión</a>
+        </div>
+
+
 
       </form>
     </div>
